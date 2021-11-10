@@ -1,0 +1,10 @@
+Walerian$Jastrzebski$Grudziadz$123456$31051432274$man$ 
+Wanda$Baranska$Tarnow$222434$52061315669$woman$ 
+Natan$Brzezinski$Piotrkow Trybunalski$321412$63071775037$man$ 
+Tymoteusz$Kozak$Zielona Gora$220390$91091662831$man$ 
+Benedykt$Gajewski$Piotrkow Trybunalski$119368$78051356074$man$ 
+Teodozja$Rogowska$Olsztyn$618346$84050404502$woman$ 
+Daria$Szczepanska$Sopot$217324$63032499987$woman$ 
+Pawel$Kozak$Kalisz$416302$35121538619$man$ 
+Kornelia$Maj$Nowy Sacz$315280$94072127646$woman$ 
+David$Domanski$Chorzow$144258$34061300070$man$ 

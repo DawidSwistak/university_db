@@ -4,7 +4,7 @@
     std::string Student::getSurname() const {return surname_;}
     std::string Student::getAddres() const {return addres_;}
     int Student::getIndexNumber() const {return indexNumber_;}
-    int Student::getPesel() const {return pesel_;}
+    long Student::getPesel() const {return pesel_;}
     Gender Student::getGender() const {return gender_;}
     std::string Student::getGenderAsString() const
     {
@@ -18,7 +18,7 @@
         }
     }
     Student::Student(std::string name, std::string surname, std::string addres, 
-            int indexNumber, int pesel,  Gender gender)
+            int indexNumber, long pesel,  Gender gender)
         :name_(name),
         surname_(surname),
         addres_(addres),

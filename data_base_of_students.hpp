@@ -1,19 +1,23 @@
 #pragma once
 #include "student.hpp"
 #include <vector>
+#include <algorithm>
+#include <iomanip>
 
 class DataBaseOfStudents
 {
     std::vector<Student> students_;
-
-public:
     void showStudent(const Student& student);
     void showStudents(const std::vector<Student>& listOfStudents);
+public:
+    std::vector<Student> getStudents() const;
+    DataBaseOfStudents& operator+=(Student student);
     void showAllStudents();
-    void addNewStudent(std::string name, std::string surname, std::string addres, 
-                        int indexNumber, int pesel, Gender gender);
+    bool addNewStudent(std::string name, std::string surname, std::string addres, 
+                        int indexNumber, long pesel, Gender gender);
     std::vector<Student> findStudentBySurname(std::string surname);
-    int findStudentByPesel(int pesel, Student * matchingStudent);
+    Student* findStudentByPesel(long pesel);
     void sortByPesel();
     void sortBySurname();
+    void remoweStudet(int index);
 };

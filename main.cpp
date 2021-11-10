@@ -1,48 +1,52 @@
 #include "data_base_of_students.hpp"
-
-    void showStudent(const Student& student)
-    {
-         std::cout <<   "Name: "    << student.getName() << 
-                        " Surname: "<< student.getSurname() <<
-                        " Addres: " << student.getAddres() <<
-                        " Index: "  << student.getIndexNumber() <<
-                        " Pesel: "  << student.getPesel() <<
-                        " Sex: "    << student.getGenderAsString() << "\n";
-    }
-    void showStudents(const std::vector<Student>& listOfStudents)
-    {
-        for(auto it : listOfStudents){
-            showStudent(it);
-        }
-    }
-
+#include "db_lib.hpp"
+    
     int main()
 {
-    DataBaseOfStudents studenty;
-    studenty.addNewStudent("Maciek", "backo", "miasto", 43256, 321, Gender::man);
-    studenty.showAllStudents();
-    std::cout<<std::endl;
-    studenty.addNewStudent("Baciek2", "cacko2", "miasto2", 124562, 123, Gender::woman);
-    studenty.addNewStudent("Adam", "acko", "miasto2", 123322, 213, Gender::man);
-    studenty.showAllStudents();
+    DataBaseOfStudents DB;
+    std::cout << "\nAFTER CREATING NEW DATA BASE:\n"; DB.showAllStudents();
+    DB.addNewStudent("Maciek", "Kowalski", "Grudziadz", 234954, 93101420091, Gender::man);
+    std::cout << "\nAFTER: .addNewStudent(\"Maciek\", \"Kowalski\", \"Grudziadz\", 234954, 92071314764, Gender::man);:\n"; DB.showAllStudents();
+    
+    addStudentsFromFile("../testingData.txt", DB);
+    std::cout << "\nAFTER ADDING 10-RECORDS FROM .TXT FILE:\n"; DB.showAllStudents();
 
-    std::cout<<"\nStudents with the same surname:\n";
-    auto foundStudents = studenty.findStudentBySurname("macko4");
-    showStudents(foundStudents);
-    std::cout<<"\nStudents with the same pesel:\n";
+    DB.sortByPesel();
+    std::cout << "\nAFTER sortByPesel();:\n"; DB.showAllStudents();
 
-    Student foundStudent;
-    if(studenty.findStudentByPesel(213, &foundStudent))
-    {
-    showStudent(foundStudent);
-    }
-    std::cout<<"After sort by pesel: \n";
-    studenty.sortByPesel();
-    std::cout<<std::endl;
-    studenty.showAllStudents();
+    DB.sortBySurname();
+    std::cout << "\nAFTER .sortBySurname();:\n"; DB.showAllStudents();
 
-    std::cout<<"\nAfter sort by pesel: \n";
-    studenty.sortBySurname();
-    std::cout<<std::endl;
-    studenty.showAllStudents();
+    std::cout << "\nAFTER .findStudentBySurname(\"Kozak\"):\nRESULT:\n"; 
+    auto resultSearchingBySurname = DB.findStudentBySurname("Kozak");
+    showStudents(resultSearchingBySurname);
+
+    std::cout << "\nAFTER .findStudentByPesel(93101420091):\nRESULT:\n";
+    auto ptrStudentFoundByPesel = DB.findStudentByPesel(93101420091);
+    showStudent(*ptrStudentFoundByPesel);
+
+    DB.remoweStudet(234954);
+    std::cout << "\nAFTER .remoweStudet(234954):\n"; DB.showAllStudents();
+
+    std::cout << "\nAFTER trying add too short PESEL:\nRESEULT:" << 
+    DB.addNewStudent("Alfreda", "Nowak", "Czestochowa", 123456, 903044006, Gender::woman) << "\n"; 
+    DB.showAllStudents();
+
+    std::cout << "\nAFTER trying add PESEL and wrong gender:\nRESEULT:" << 
+    DB.addNewStudent("Alfreda", "Nowak", "Czestochowa", 123456, 70032550684, Gender::man) << "\n"; 
+    DB.showAllStudents();
+
+    std::cout << "\nAFTER trying add too long PESEL:\nRESEULT:" << 
+    DB.addNewStudent("Alfreda", "Nowak", "Czestochowa", 123456, 700325506848, Gender::man) << "\n"; 
+    DB.showAllStudents();
+
+    std::cout << "\nAFTER trying add PESEL with wrong last control value :\nRESEULT:" << 
+    DB.addNewStudent("Alfreda", "Nowak", "Czestochowa", 123456, 70032550685, Gender::man) << "\n"; 
+    DB.showAllStudents();
+
+    addStudentsToFile("../savedData.txt", DB);
+    addStudentsFromFile("../savedData.txt", DB);
+    std::cout << "\nAFTER ADDING DATA TO NEW FILE\nAND AFTER THAT READING THAT FILE AND ADDING TO EXISTING DATA:\n";
+    DB.showAllStudents();
+
 }

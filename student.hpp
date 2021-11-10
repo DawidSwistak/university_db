@@ -14,17 +14,17 @@ private:
     std::string surname_;
     std::string addres_;
     int indexNumber_;
-    int pesel_;
+    long pesel_;
     Gender gender_;  
 public:
     std::string getName() const;
     std::string getSurname() const;
     std::string getAddres() const;
     int getIndexNumber() const;
-    int getPesel() const;
+    long getPesel() const;
     Gender getGender() const;
     std::string getGenderAsString() const;
 
     Student(std::string name = "name", std::string surname = "surname", std::string addres = "addres", 
-            int indexNumber = 0, int pesel = 0,  Gender gender = Gender::man);
+            int indexNumber = 0, long pesel = 0,  Gender gender = Gender::man);
 };
