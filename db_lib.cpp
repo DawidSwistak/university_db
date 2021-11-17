@@ -1,6 +1,6 @@
 #include "db_lib.hpp"
 
-bool validationOfPesel(const long pesel, Gender gender)
+bool validationOfPesel(long long pesel, Gender gender)
 {
     long controlValue = 0;
     long peselCopy = pesel;
@@ -13,7 +13,7 @@ bool validationOfPesel(const long pesel, Gender gender)
     bool genderInPeselSayMan = (pesel/10) % 2;
     Gender peselGender = (genderInPeselSayMan) ? Gender::man : Gender::woman;
 
-    if((controlValue%10 == 0) && (peselGender == gender))
+    if( (controlValue%10 == 0) && (peselGender == gender) && (pesel > 10000000) )
     {
         return true;
     }
@@ -32,7 +32,7 @@ void showStudentNH(const Student& student)
 
 void showStudent(const Student& student)
 {
-    std::cout << std::setw(14) << "-----NAME---------SURNAME--------------ADDRES---------INDEX_NUMBER----PESEL-----SEX---\n";
+    std::cout << "-----NAME----- | ----SURNAME----- | ---------ADDRES--------- | INDEX_NUMBER | ----PESEL--- | -GENDER- | \n";
     showStudentNH(student);
 }
 
@@ -87,7 +87,7 @@ Student makeStudent(std::vector<std::string> parsedText)
     return student;
 }
 
-bool addStudentsFromFile(std::string nameOfFile, DataBaseOfStudents & dbOfStudents)
+bool takeStudentsFromFile(std::string nameOfFile, DataBaseOfStudents & dbOfStudents)
 {
     std::fstream file;
     std::string oneLine;

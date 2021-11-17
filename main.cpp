@@ -8,7 +8,7 @@
     DB.addNewStudent("Maciek", "Kowalski", "Grudziadz", 234954, 93101420091, Gender::man);
     std::cout << "\nAFTER: .addNewStudent(\"Maciek\", \"Kowalski\", \"Grudziadz\", 234954, 92071314764, Gender::man);:\n"; DB.showAllStudents();
     
-    addStudentsFromFile("../testingData.txt", DB);
+    takeStudentsFromFile("../testingData.txt", DB);
     std::cout << "\nAFTER ADDING 10-RECORDS FROM .TXT FILE:\n"; DB.showAllStudents();
 
     DB.sortByPesel();
@@ -45,7 +45,7 @@
     DB.showAllStudents();
 
     addStudentsToFile("../savedData.txt", DB);
-    addStudentsFromFile("../savedData.txt", DB);
+    takeStudentsFromFile("../savedData.txt", DB);
     std::cout << "\nAFTER ADDING DATA TO NEW FILE\nAND AFTER THAT READING THAT FILE AND ADDING TO EXISTING DATA:\n";
     DB.showAllStudents();
 
