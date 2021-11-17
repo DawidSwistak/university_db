@@ -1,4 +1,4 @@
-name: STL containers homework
+name: university-db-Test
 
 on: [push, pull_request]
 
