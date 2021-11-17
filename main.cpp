@@ -12,10 +12,10 @@
     std::cout << "\nAFTER ADDING 10-RECORDS FROM .TXT FILE:\n"; DB.showAllStudents();
 
     DB.sortByPesel();
-    std::cout << "\nAFTER sortByPesel();:\n"; DB.showAllStudents();
+    std::cout << "\nAFTER sortByPesel():\n"; DB.showAllStudents();
 
     DB.sortBySurname();
-    std::cout << "\nAFTER .sortBySurname();:\n"; DB.showAllStudents();
+    std::cout << "\nAFTER .sortBySurname():\n"; DB.showAllStudents();
 
     std::cout << "\nAFTER .findStudentBySurname(\"Kozak\"):\nRESULT:\n"; 
     auto resultSearchingBySurname = DB.findStudentBySurname("Kozak");
@@ -46,7 +46,7 @@
 
     addStudentsToFile("../savedData.txt", DB);
     takeStudentsFromFile("../savedData.txt", DB);
-    std::cout << "\nAFTER ADDING DATA TO NEW FILE\nAND AFTER THAT READING THAT FILE AND ADDING TO EXISTING DATA:\n";
+    std::cout << "\nAFTER ADDING DATA TO NEW FILE..\nAND AFTER THAT, READING THAT FILE AND ADDING TO EXISTING DATA:\n";
     DB.showAllStudents();
 
 }
