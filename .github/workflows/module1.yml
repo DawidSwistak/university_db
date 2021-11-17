@@ -1,6 +1,6 @@
 name: STL containers homework
 
-on: [push, pull_request, commit]
+on: [push, pull_request]
 
 jobs:
   grayscale-image:
